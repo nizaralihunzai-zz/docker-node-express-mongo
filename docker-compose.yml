@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  app:
+    container_name: trade-shift
+    restart: always
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    links:
+      - mongo
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
